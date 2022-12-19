@@ -1,0 +1,29 @@
+<div class="container">
+<h3>Lista de las salas</h3>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Número</th>
+            <th scope="col">Número Sorteo</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Maximo</th>
+            <th scope="col">Inscritos</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Mirar</th>
+        </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let items of salas, let i=index">
+            <td>{{i+1}}</td>
+            <td>{{items._id}}</td>
+            <td ><a *ngIf="items.activar==true"  class="btn btn-success btn" role="button" [routerLink]="['/comprar',items._id]"><span>$</span>{{items.valor}}</a></td>
+            <td>{{items.maximo}}</td>
+            <td>{{items.cantidad}}</td>
+            <td>{{items.fecha}}</td>
+            <td><a [routerLink]="['/editar',items._id]"><i class="bi bi-pencil-square"></i></a></td>
+            <td><a [routerLink]="['/sala',items._id]"><i class="bi bi-eye"></i></a></td>
+            </tr>
+    </tbody>
+</table>
+</div>        

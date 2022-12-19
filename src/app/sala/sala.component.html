@@ -1,0 +1,78 @@
+<div class="contenido">
+<div class="info">    
+<table class="table table-dark">
+    <thead class="">
+        <tr>
+           <th scope="col"># Sorteo</th>
+           <th scope="col">Cantidad</th>
+           <th scope="col">Premio</th>
+           <th scope="col">Fecha</th>
+        </tr>
+     </thead>
+     <tbody class="table">
+         <tr>
+            <td>{{sala._id}}</td>
+            <td>{{sala.cantidad}}</td>
+            <td><span>$</span>{{sala.premio}}</td>
+            <td>{{sala.fecha}}</td>
+            
+         </tr>
+         <tr>
+            <td colspan="4">
+                <!-- Button trigger modal -->
+                <button type="button" (click)="OnGanador()" class="btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Elegir al ganador
+                  </button>
+                </td>
+         </tr>
+         <tr>
+          <td colspan="4">
+            <button id="btn-eliminar" class="btn btn-warning" type="button" (click)="OnDelete()">Eliminar Sala</button>
+          </td>
+         </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="participantes">
+    <h3>Participantes</h3>
+<table class="table table-success">
+    
+    <thead class="">
+        <tr>
+           <th scope="col">Identificación</th>
+           <th scope="col">Nombre</th>
+           <th scope="col">Correo</th>
+           <th scope="col">Número</th>
+        </tr>
+     </thead>
+     <tbody class="">
+         <tr *ngFor="let item of sala.participantes">
+            <td><span>*****</span>{{item.identificacion}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.correo}}</td>
+            <td>{{item._id}}</td>
+         </tr>
+    </tbody>
+</table>
+</div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Resultados</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <b>{{participante.nombre}}</b> identificad@ <b><span>*****</span>{{g2}}</b>, es el feliz ganador o la feliz
+         ganadora del Sorteo #<b>{{participante.sala}}</b> con el número <b>{{participante._id}}</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
